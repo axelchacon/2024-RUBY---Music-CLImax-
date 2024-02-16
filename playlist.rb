@@ -5,4 +5,9 @@ class Playlist
         @description = description
         @songs = songs
     end 
+
+    def details
+        [@id, @name, @description, "#{@songs.size} Songs"]
+    end
 end 
+

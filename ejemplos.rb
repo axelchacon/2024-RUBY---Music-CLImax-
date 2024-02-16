@@ -98,22 +98,53 @@
 
 
 # ####################      Ejemplo 5     ###################################################
+# require "json"
+
+# store = JSON.parse(File.read('store.json'), symbolize_names: true)
+
+
+# class Playlist
+#   def initialize(id, name, description, songs)
+#     @id = id
+#     @name = name
+#     @description = description
+#     @songs = songs
+#   end
+# end
+
+# playlists = store.map do |playlist|
+#   Playlist.new(playlist[:id], playlist[:name], playlist[:description], playlist[:songs])
+# end
+
+# pp playlists
+
+# ####################      Ejemplo 5     ###################################################
+# require "terminal-table"
+# table = Terminal::Table.new do |t|
+#   t.rows = [
+#       [1, "Salsa", "Salsa latina", "3 songs"],
+#       [2, "Rock", "Lo mejor", "2 songs"],
+#       [1, "Salsa", "Salsa latina", "3 songs"]
+#   ]
+# end
+# puts table
+
+# ####################      Ejemplo 6     ###################################################
 require "json"
+require "terminal-table"
+require_relative "playlist"
 
-store = JSON.parse(File.read('store.json'), symbolize_names: true)
+store = JSON.parse(File.read('store.json'), symbolize_names:true) #Cambiar de JSON a hash con símboloso
 
-
-class Playlist
-  def initialize(id, name, description, songs)
-    @id = id
-    @name = name
-    @description = description
-    @songs = songs
-  end
-end
 
 playlists = store.map do |playlist|
-  Playlist.new(playlist[:id], playlist[:name], playlist[:description], playlist[:songs])
+    # Playlist.new(id: playlist[:id], name: playlist[:name], description: playlist[:description], songs: playlist[:songs])
+    Playlist.new(**playlist)
 end
 
-pp playlists
+table = Terminal::Table.new do |t|
+    t.title = "Music CLImax"
+    t.headings = ["ID", "List", "Description", "#Songs"]
+    t.rows = playlists.map { |playlist| playlist.details}
+end
+puts table
