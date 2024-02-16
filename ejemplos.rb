@@ -130,21 +130,29 @@
 # puts table
 
 # ####################      Ejemplo 6     ###################################################
-require "json"
-require "terminal-table"
-require_relative "playlist"
+# require "json"
+# require "terminal-table"
+# require_relative "playlist"
 
-store = JSON.parse(File.read('store.json'), symbolize_names:true) #Cambiar de JSON a hash con símboloso
+# store = JSON.parse(File.read('store.json'), symbolize_names:true) #Cambiar de JSON a hash con símboloso
 
 
-playlists = store.map do |playlist|
-    # Playlist.new(id: playlist[:id], name: playlist[:name], description: playlist[:description], songs: playlist[:songs])
-    Playlist.new(**playlist)
-end
+# playlists = store.map do |playlist|
+#     # Playlist.new(id: playlist[:id], name: playlist[:name], description: playlist[:description], songs: playlist[:songs])
+#     Playlist.new(**playlist)
+# end
 
-table = Terminal::Table.new do |t|
-    t.title = "Music CLImax"
-    t.headings = ["ID", "List", "Description", "#Songs"]
-    t.rows = playlists.map { |playlist| playlist.details}
-end
-puts table
+# table = Terminal::Table.new do |t|
+#     t.title = "Music CLImax"
+#     t.headings = ["ID", "List", "Description", "#Songs"]
+#     t.rows = playlists.map { |playlist| playlist.details}
+# end
+# puts table
+
+# ####################      Ejemplo 7    ###################################################
+poder = "Hola Juancho"
+p poder.split(" ")
+
+action, id = ["juan", "sos"]
+puts action
+puts id
