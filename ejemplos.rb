@@ -51,16 +51,20 @@
 # require "json"
 # store = JSON.parse(File.read('store.json'), symbolize_names:true) #Cambiar de JSON a hash con símboloso
 # class Playlist
-#     def initialize(id:, name:, description:, songs:)
-#         @id = id
+#     def initialize( songs:, name:, description:, id:)
+     
 #         @name = name
-#         @description = description
+#         @descriptionsff = description
 #         @songs = songs
+#         @id = id
 #     end 
 # end 
 
 # playlists = store.map do |playlist|
-#     Playlist.new(id: playlist[:id], name: playlist[:name], description: playlist[:description], songs: playlist[:songs])
+#     # Playlist.new(id: playlist[:id], name: playlist[:name], description: playlist[:description], songs: playlist[:songs])
+#     pp playlist
+#     Playlist.new(**playlist)
+    
 # end
 # pp playlists
 
@@ -150,9 +154,21 @@
 # puts table
 
 # ####################      Ejemplo 7    ###################################################
-poder = "Hola Juancho"
-p poder.split(" ")
 
-action, id = ["juan", "sos"]
-puts action
-puts id
+# poder = [2,4,5]
+# p poder.map {|numero| numero*4 }
+# puts "##########################"
+# poder = "Hola Juancho"
+# p poder.split(" ")
+
+# puts "##########################"
+# action, id = ["juan", "sos"]
+# p action
+# p id
+#  puts "##########################"
+
+# eres, un, *crack = ["juan", "sos", "sosa", "sosr", "sosbet"]
+# pp eres
+# pp un
+# p crack
+# puts "##########################"
