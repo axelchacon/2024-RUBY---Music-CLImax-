@@ -171,4 +171,81 @@
 # pp eres
 # pp un
 # p crack
-# puts "##########################"
+#  puts "##########################"
+# ####################      Ejemplo 8    ###################################################
+# require "json"
+# class Person
+#     def initialize(name:, age:)
+#         @name= name
+#         @age= age
+#     end
+#      ##### link : https://ruby-doc.org/stdlib-3.0.2/libdoc/json/rdoc/JSON.html
+#     def to_json(*args)   #####  Here's the JSON addition for it:
+#         {name: @name, age: @age}.to_json(*args)
+#     end
+# end
+# person = Person.new(name: "Juan", age: 25)
+# p JSON.generate(person)
+# ####################      Ejemplo 9    ###################################################
+# playlistf = {
+#   id: 1,
+#   title: "Amor narcotico",
+#   artists: ["Chichi Peralta", "Son Familia"],
+#   album: "Pa' Otro La'o",
+#   released: 1997
+# }
+
+# # Utilizamos pp para imprimir la estructura antes de eliminar el elemento
+# pp playlistf
+
+# # Eliminamos el elemento con la clave :id
+# playlistf.delete(:id)
+
+# # Volvemos a imprimir para ver la estructura después de eliminar
+# pp playlistf
+
+# playlistarray = [1,"Amor narcotico", ["Chichi Peralta", "Son Familia"], 1997]
+
+# # Eliminamos el elemento con la clave :id
+# playlistarray.delete(playlistarray[0])
+
+# # Volvemos a imprimir para ver la estructura después de eliminar
+# pp playlistarray
+# ####################      Ejemplo 10   ###################################################
+# playlisthases = [
+#     {
+#   id: 1,
+#   title: "Amor narcotico",
+#   artists: ["Chichi Peralta", "Son Familia"],
+#   album: "Pa' Otro La'o",
+#   released: 1997
+# } ,
+# {
+#   id: 2,
+#   title: "Amor narcoticoddd",
+#   artists: ["Chichi Peraltaddd", "Son Familiadd"],
+#   album: "Pa' Otro La'oddd",
+#   released: 199999
+# },
+# {
+#   id: 3,
+#   title: "Amor narcoticorrr",
+#   artists: ["Chichi Peraltarr", "Son Famirrrlia"],
+#   album: "Pa' Otro La'orrrr",
+#   released: 19970
+# }
+
+# ]
+# found_playlisthases = playlisthases.find { |elemento| elemento[:id] == 1 }
+# pp  found_playlisthases
+# # playlisthases.delete(  {
+# #     id: 1,
+# #     title: "Amor narcotico",
+# #     artists: ["Chichi Peralta", "Son Familia"],
+# #     album: "Pa' Otro La'o",
+# #     released: 1997
+# #   })
+#   playlisthases.delete( found_playlisthases )
+
+# # Volvemos a imprimir para ver la estructura después de eliminar
+# pp playlisthases
