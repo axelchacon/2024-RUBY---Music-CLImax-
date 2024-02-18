@@ -17,26 +17,30 @@ def print_table(playlists)
     puts table
     
 end
-
+def save(playlists)
+    File.write('store.json', JSON.pretty_generate(playlists))
+end
 def create_playlist(playlists) #Modifiado paso3
     playlist_hash = playlist_form
     # new_playlist = Playlist.new(name: playlist_hash[:name], description: playlist_hash[:description])
     new_playlist = Playlist.new(**playlist_hash)
     playlists << new_playlist 
-    File.write('store.json', JSON.pretty_generate(playlists)) #Modifiado paso4: JSON.pretty_generate(playlists) es la lista actulizada para que se actualice el JSON
+    # File.write('store.json', JSON.pretty_generate(playlists))
+    save(playlists)
+    
 end
 def update_playlist(playlists, id) #Modifiado paso4
     playlist_found = playlists.find {|playlist| playlist.id == id} #Modifiado paso4
     playlist_hash = playlist_form
     # playlist_found.update(name: playlist_hash[:name], description: playlist_hash[:description]) #Modifiado paso4: .update es un método propio de la clase creada por ti
     playlist_found.update(**playlist_hash) #Modifiado paso4: .update es un método propio de la clase creada por ti
-    File.write('store.json', JSON.pretty_generate(playlists))#Modifiado paso4
+    save(playlists)
 end
 def delete_playlist(playlists, id)
     playlist_found = playlists.find {|playlist| playlist.id == id} #Modifiado paso4
 
     playlists.delete(playlist_found) #Modifiado paso4: .delete es un método propio del mismo Ruby en array
-    File.write('store.json', JSON.pretty_generate(playlists))#Modifiado paso4
+    save(playlists)
 end
 def playlist_form #Modifiado paso3
     print "Name: "
@@ -69,5 +73,3 @@ until action == "exit"
     end
 end 
 
-
-# pp playlists
