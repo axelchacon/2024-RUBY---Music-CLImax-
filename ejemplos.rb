@@ -249,3 +249,42 @@
 
 # # Volvemos a imprimir para ver la estructura después de eliminar
 # pp playlisthases
+
+# ####################      Ejemplo 11  ###################################################
+# class Ejemplo
+#     attr_reader :privados
+#     def initialize(hola)
+#         @hola=hola
+#         @privados=privado
+#     end
+#     def publico
+#       puts "Este es un método público"
+#       privado
+#     end
+  
+#     def otro_publico
+#       puts "Este es otro método público"
+#     end
+  
+#     private
+  
+#     def privado
+#       puts "#{@hola}, Este es un método privado"
+#     end
+# end
+  
+#   # Crear una instancia de la clase
+#   objeto = Ejemplo.new("Hola")
+
+#   objeto.privados
+# puts "#####################"
+#   objeto.publico
+
+#   puts "#####################"
+#   objeto.otro_publico
+
+#   puts "#####################"
+#   objeto.privado
+
+#   puts "#####################"
+  
