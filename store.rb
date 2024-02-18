@@ -1,3 +1,4 @@
+require_relative "playlist" ## No es neecsario ya que está cargado en main.rb
 class Store 
     attr_reader :playlists
     def initialize(filename)
@@ -24,7 +25,7 @@ class Store
 
     def load_playlists
         store = JSON.parse(File.read(@filename), symbolize_names:true) #Cambiar de JSON a hash con símboloso
-        store.map {|playlist| Playlist.new(**playlist)} # playlist es un array
+        store.map {|playlist| Playlist.new(**playlist)} # playlist es un array que contiene hashes
     # Playlist.new(id: playlist[:id], name: playlist[:name], description: playlist[:description], songs: playlist[:songs])
     end
     def save
