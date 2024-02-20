@@ -54,7 +54,7 @@ class AppMusic
     end
 ######## con song
     def show_playlist(id)
-      playlist = @store.find_playlist(id)
+      playlist = @store.find_playlist(id) #es un array de hashes que es la lista enontrada detipo de canciones
       action = ""
       until action == "back"
         print_table(list: playlist.songs,
@@ -64,7 +64,7 @@ class AppMusic
         action, id = menu(options)
         case action
         when "create" then create_song(playlist)
-        when "update" then update_song(playlist, id)
+        when "update" then update_song(playlist, id) # el id actualiado intenamente es del song y la playlist es del encontrado
         when "delete" then delete_song(playlist, id)
         when "back" then next #Esto es para que regrese al programa anterior y es una palabra reservada
         else
@@ -75,8 +75,8 @@ class AppMusic
     end
 ######## revisarrevisarrevisarrevisarrevisarrevisarrevisarrevisarrevisar inicio
     def create_song(playlist)
-      song_data = song_form
-      new_song = Song.new(**song_data)
+      song_data = song_form # es un hahes que contiene símbolos con valor
+      new_song = Song.new(**song_data) 
       @store.add_song(playlist.id, new_song)
     end
 

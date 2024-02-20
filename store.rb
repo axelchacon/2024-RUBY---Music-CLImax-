@@ -3,7 +3,7 @@ class Store
     attr_reader :playlists
     def initialize(filename)
         @filename = filename #'store.json'
-        @playlists = load_playlists
+        @playlists = load_playlists # es un array de hashes
     end
     def add_playlist(new_playlist)
         playlists << new_playlist 
@@ -22,13 +22,13 @@ class Store
         save
     end
     def find_playlist(id)
-        @playlists.find {|playlist| playlist.id == id}
+        @playlists.find {|playlist| playlist.id == id} # array de hashes
     end
     ## Creamos los métodos específicos para el song
     ######## revisarrevisarrevisarrevisarrevisarrevisarrevisarrevisarrevisar inicio
     def add_song(id, new_song)
         playlist = find_playlist(id)
-        playlist.songs.push(new_song)
+        playlist.songs.push(new_song) 
         save
     end
 
@@ -46,7 +46,7 @@ class Store
     def find_song(id, playlist)
         playlist.songs.find {|song| song.id == id}
     end
-        ######## revisarrevisarrevisarrevisarrevisarrevisarrevisarrevisarrevisar final
+    ######## revisarrevisarrevisarrevisarrevisarrevisarrevisarrevisarrevisar final
     private # palabra reservada del Ruby para clases el cual no se puede acceder externamente a estos métodos sino de manera interna
 
     def load_playlists

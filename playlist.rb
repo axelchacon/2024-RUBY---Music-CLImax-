@@ -7,7 +7,7 @@ class Playlist
         @@id_count = @id #Modifiado paso3
         @name = name
         @description = description
-        @songs = songs.map {|son_data| Song.new(**son_data)}
+        @songs = songs.map {|son_data| Song.new(**son_data)} #array de instancias. Convierte las hashes a nstancias
     end 
 
     def details
