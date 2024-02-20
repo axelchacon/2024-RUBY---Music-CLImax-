@@ -11,15 +11,18 @@ class Store
         save
     end
     def update_playlist(id, data)
-        playlist_found = playlists.find {|playlist| playlist.id == id} #Modifiado paso4
+        playlist_found = find_playlist(id) #Modifiado paso4
         playlist_found.update(**data) #Modifiado paso4: .update es un método propio de la clase creada por ti
         save
     
     end
     def delete_playlist(id)
-        playlist_found = @playlists.find {|playlist| playlist.id == id}
+        playlist_found = find_playlist(id)
         @playlists.delete(playlist_found)
         save
+    end
+    def find_playlist(id)
+        @playlists.find {|playlist| playlist.id == id}
     end
     private # palabra reservada del Ruby para clases el cual no se puede acceder externamente a estos métodos sino de manera interna
 

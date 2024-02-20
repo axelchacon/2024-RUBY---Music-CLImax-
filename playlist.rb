@@ -1,12 +1,13 @@
+require_relative "song"
 class Playlist
     @@id_count =0 #Modifiado paso3
-    attr_reader :id  #Modifiado paso4
+    attr_reader :id, :name, :songs #Modifiado paso4
     def initialize( name:, description:, id:nil, songs: []) #Modifiado paso3. de initialize(id:, name:, description:, songs:)
         @id = id || @@id_count.next #Modifiado paso3
         @@id_count = @id #Modifiado paso3
         @name = name
         @description = description
-        @songs = songs
+        @songs = songs.map {|son_data| Song.new(**son_data)}
     end 
 
     def details

@@ -10,11 +10,12 @@ class AppMusic
     def start
       action = ""
       until action == "exit"
-        print_table(@store.playlists)
-        action, id = main_menu
+        print_table(list: @store.playlists, title: "Music CLImax", headings: ["ID", "List", "Descriptions", "#Songs"] )
+        options = ["create", "show ID", "update ID", "delete ID", "exit"]
+        action, id = menu(options)
         case action
         when "create" then create_playlist #Modifiado paso3
-        when "show" then puts "show action with ID #{id}"
+        when "show" then show_playlist(id)
         when "update" then update_playlist(id) #Modifiado paso4
         when "delete" then delete_playlist(id)
         when "exit" then puts "Goodbye!"
@@ -25,11 +26,11 @@ class AppMusic
 
     end
     private
-    def print_table(playlists)
+    def print_table(list:, title:, headings:)  # reutiliable para songs y la canciones
         table = Terminal::Table.new 
-        table.title = "Music CLImax"
-        table.headings = ["ID", "List", "Description", "#Songs"]
-        table.rows = playlists.map { |playlist| playlist.details}
+        table.title = title # string
+        table.headings = headings # array
+        table.rows = list.map { |playlist| playlist.details} # array
         puts table
         
     end
@@ -47,9 +48,32 @@ class AppMusic
         @store.update_playlist(id, playlist_hash)
         # playlist_found.update(name: playlist_hash[:name], description: playlist_hash[:description]) #Modifiado paso4: .update es un método propio de la clase creada por ti
     end
+  
     def delete_playlist(id)
         @store.delete_playlist(id)
     end
+
+    def show_playlist(id)
+      playlist = @store.find_playlist(id)
+      action = ""
+      until action == "back"
+        print_table(list: playlist.songs,
+         title: playlist.name, 
+         headings: ["ID", "Title", "Artists", "Album", "Released"] )
+        options = ["create", "update ID",  "delete ID", "back"]
+        action, id = menu(options)
+        case action
+        when "create" then puts "create song" #Modifiado paso3
+        when "update" then  puts "update song" #Modifiado paso4
+        when "delete" then  puts "delete song"
+        when "back" then next #Esto es para que regrese al programa anterior y es una palabra reservada
+        else
+          puts "Invalid action"
+        end
+      end 
+
+    end
+
     def playlist_form #Modifiado paso3
         print "Name: "
         name = gets.chomp
@@ -58,8 +82,8 @@ class AppMusic
         {name: name, description: description}
     end
     
-    def main_menu
-      puts "create | show ID | update ID | delete ID | exit"
+    def menu(options) #options es un array. Ahora es reutlizable para canciones y songs
+      puts options.join("|") #es string 
       print "> "
       action, id = gets.chomp.split #["Hola", "2"]# por defecto split da con espacio
       [action, id.to_i] #["Hola", 2]

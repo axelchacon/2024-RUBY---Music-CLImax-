@@ -287,4 +287,13 @@
 #   objeto.privado
 
 #   puts "#####################"
-  
+  # ####################      Ejemplo 12:instancia de clases  ###################################################
+# class Person
+#     def initialize(name:, age:)
+#         @name= name
+#         @age= age
+#     end
+# end
+# people = [{name: "Juan", age:25}, {name: "Pedro", age:30}]
+# people_intances = people.map {|person| Person.new(**person)}
+# p people_intances
