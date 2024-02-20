@@ -52,7 +52,7 @@ class AppMusic
     def delete_playlist(id)
         @store.delete_playlist(id)
     end
-
+######## con song
     def show_playlist(id)
       playlist = @store.find_playlist(id)
       action = ""
@@ -63,9 +63,9 @@ class AppMusic
         options = ["create", "update ID",  "delete ID", "back"]
         action, id = menu(options)
         case action
-        when "create" then puts "create song" #Modifiado paso3
-        when "update" then  puts "update song" #Modifiado paso4
-        when "delete" then  puts "delete song"
+        when "create" then create_song(playlist)
+        when "update" then update_song(playlist, id)
+        when "delete" then delete_song(playlist, id)
         when "back" then next #Esto es para que regrese al programa anterior y es una palabra reservada
         else
           puts "Invalid action"
@@ -73,7 +73,33 @@ class AppMusic
       end 
 
     end
+######## revisarrevisarrevisarrevisarrevisarrevisarrevisarrevisarrevisar inicio
+    def create_song(playlist)
+      song_data = song_form
+      new_song = Song.new(**song_data)
+      @store.add_song(playlist.id, new_song)
+    end
 
+    def update_song(playlist, id) #Modifado paso4
+      new_data= song_form
+      @store.update_song(id, new_data, playlist.id)
+    end
+    def delete_song(playlist, id)
+      @store.delete_song(id, playlist.id)
+    end
+
+    def song_form #Modifiado paso3
+      print "Title: "
+      title = gets.chomp
+      print "Artists: "
+      artists = gets.chomp.split(", ").map {|artis| artis.strip}
+      print "Album: "
+      album = gets.chomp
+      print "Released: "
+      released = gets.chomp
+      {title: title, artists: artists, album: album, released: released}
+    end
+######## revisarrevisarrevisarrevisarrevisarrevisarrevisarrevisarrevisar final
     def playlist_form #Modifiado paso3
         print "Name: "
         name = gets.chomp

@@ -25,12 +25,12 @@
       },
       {
         "id": 6,
-        "title": "Me tengo que ir",
+        "title": "hhhhh",
         "artists": [
-          "Adolecentes"
+          "kkkkk"
         ],
-        "album": "Cohort-11",
-        "released": 2023
+        "album": "hhhhh, kkkk",
+        "released": 2000
       }
     ]
   },
@@ -57,22 +57,6 @@
         "album": "Canción Animal",
         "released": 1990
       }
-    ]
-  },
-  {
-    "id": 6,
-    "name": "vvvvv",
-    "description": "llllll",
-    "songs": [
-
-    ]
-  },
-  {
-    "id": 7,
-    "name": "ggggg",
-    "description": "bbbbb",
-    "songs": [
-
     ]
   }
 ]

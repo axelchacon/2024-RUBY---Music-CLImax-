@@ -24,6 +24,29 @@ class Store
     def find_playlist(id)
         @playlists.find {|playlist| playlist.id == id}
     end
+    ## Creamos los métodos específicos para el song
+    ######## revisarrevisarrevisarrevisarrevisarrevisarrevisarrevisarrevisar inicio
+    def add_song(id, new_song)
+        playlist = find_playlist(id)
+        playlist.songs.push(new_song)
+        save
+    end
+
+    def update_song(id,new_data, playlist_id)
+        playlist = find_playlist(playlist_id) #Modifiado paso4
+        song = find_song(id, playlist) #Modifiado paso4: .update es un método propio de la clase creada por ti
+        song.update(**new_data)
+        save
+    end
+    def delete_song(id, playlist_id )
+        playlist = find_playlist(playlist_id) 
+        playlist.songs.delete_if { |song| song.id == id}
+        save
+    end
+    def find_song(id, playlist)
+        playlist.songs.find {|song| song.id == id}
+    end
+        ######## revisarrevisarrevisarrevisarrevisarrevisarrevisarrevisarrevisar final
     private # palabra reservada del Ruby para clases el cual no se puede acceder externamente a estos métodos sino de manera interna
 
     def load_playlists
